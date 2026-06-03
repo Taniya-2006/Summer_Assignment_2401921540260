@@ -1,0 +1,16 @@
+#Return an array of the squares of each number sorted in non-decreasing order.
+
+
+class Solution:
+    def sortedSquares(self, nums):
+        squared_nums=[0]*len(nums)
+        left,right=0,len(nums)-1
+        for i in range(len(nums)-1,-1,-1):
+            if abs(nums[left])>abs(nums[right]):
+                squared_nums[i]=nums[left]**2
+                left+=1
+            else:
+                squared_nums[i]=nums[right]**2
+                right-=1
+        return squared_nums
+        
