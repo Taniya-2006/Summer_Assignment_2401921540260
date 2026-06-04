@@ -1,0 +1,20 @@
+#Return the Reshaped matrix
+
+class Solution:
+    def matrixReshape(self, matrix, r, c):
+        if(len(matrix)*len(matrix[0])!=r*c):
+            return matrix
+        else:
+            reshape=[[0 for j in range(c)]for i in range(r)]
+            flatten=[]
+            k=0
+            for i in range(len(matrix)):
+                for j in range(len(matrix[0])):
+                    flatten.append(matrix[i][j])
+
+            for i in range(r):
+                for j in range(c):
+                    reshape[i][j]=flatten[k]
+                    k+=1
+            return reshape
+        
