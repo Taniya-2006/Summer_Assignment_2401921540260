@@ -1,0 +1,11 @@
+#Return the sum of the matrix diagonals.
+
+class Solution:
+    def diagonalSum(self, matrix):
+        diagonal_sum=0
+        for rows in range(len(matrix)):
+            for columns in range(len(matrix[rows])):
+                if (rows==columns) or (rows+columns==len(matrix)-1):
+                    diagonal_sum+=matrix[rows][columns]
+        return diagonal_sum
+        
