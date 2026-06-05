@@ -1,0 +1,16 @@
+#Return true if it is a palindrome, or false otherwise.
+
+
+
+class Solution:
+    def isPalindrome(self, s):
+        palindrome=""
+        s=s.lower()
+        for i in s:
+            if i.isalnum():
+                palindrome=palindrome+i
+        if palindrome==palindrome[::-1]:
+            return True
+        else:
+            return False
+        
