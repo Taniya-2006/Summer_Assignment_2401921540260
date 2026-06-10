@@ -1,0 +1,27 @@
+#Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+
+
+class Solution:
+    def findAnagrams(self, s, p):
+        ind=[]
+        if len(s)>=len(p):
+            count1=[0]*26
+            count2=[0]*26
+
+            for char in p:
+                count1[ord(char)-ord("a")]+=1
+    
+            for i in range(len(p)):
+                count2[ord(s[i])-ord('a')]+=1
+
+                if count1==count2:
+                    ind.append(0)
+    
+    
+            for j in range(len(p),len(s)):
+                count2[ord(s[j])-ord("a")]+=1
+                count2[ord(s[j-len(p)])-ord("a")]-=1
+                if(count1==count2):
+                    ind.append(j-len(p)+1)
+
+        return ind
