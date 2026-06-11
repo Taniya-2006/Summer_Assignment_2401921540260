@@ -1,0 +1,24 @@
+#Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+
+class Solution:
+    def reverseWords(self, s):
+        count=0
+        rev_s=[]
+        left=0
+        for i in range(len(s)):
+            if s[i]==" ":
+                count=i
+                right=count-1
+                while right>=left:
+                    rev_s.append(s[right])
+                    right-=1
+                rev_s.append(" ")
+                left=count+1
+            elif i==len(s)-1:
+                right=i
+                while right>=left:
+                    rev_s.append(s[right])
+                    right-=1
+        rev_s="".join(rev_s)
+        return rev_s
+        
