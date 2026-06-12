@@ -1,0 +1,28 @@
+#Given an array of characters chars, compress it.
+
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        read,write=0,0
+        for i in range(len(chars)-1):
+            if chars[i]==chars[i+1] :
+                continue
+            else:
+                count=i-read+1
+                chars[write]=chars[read]
+                write+=1
+                if count>1:
+                    for j in range(len(str(count))):
+                       chars[write]=str(count)[j]
+                       write+=1
+                read=i+1
+        count=len(chars)-read
+        chars[write]=chars[read]
+        write+=1
+        if count>1:
+           for j in range(len(str(count))):
+                chars[write]=str(count)[j]
+                write+=1
+
+        return write
+
+        
