@@ -1,0 +1,17 @@
+#Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+class Solution:
+    def groupAnagrams(self, str):
+        group={}
+        for char in range(len(str)):
+            count=[0]*26
+            for j in range(len(str[char])):
+                count[ord(str[char][j])-ord("a")]+=1
+            tup=tuple(count)
+            if tup not in group:
+                group[tup]=[str[char]]
+            else:
+                group[tup].append(str[char])
+
+        return list(group.values())
+        
