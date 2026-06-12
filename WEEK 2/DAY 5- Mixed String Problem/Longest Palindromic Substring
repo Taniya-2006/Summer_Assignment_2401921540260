@@ -1,0 +1,24 @@
+#Given a string s, return the longest palindromic substring in s.
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        max_substring=""
+        def EOC(left,right):
+            while(left>=0 and right<len(s) and s[left]==s[right]):
+                left-=1
+                right+=1
+
+            return left+1,right
+
+        for i in range(len(s)):
+            l1,r1=EOC(i,i+1)
+            l2,r2=EOC(i,i)
+
+            if len(s[l1:r1])>len(s[l2:r2]):
+                current_substring=s[l1:r1]
+            else:
+                current_substring=s[l2:r2]
+            if len(max_substring)<=len(current_substring):
+                max_substring=current_substring
+
+        return max_substring    
