@@ -1,0 +1,6 @@
+-DAY 1-Linked List
+-DAY 2-Linked List
+-DAY 3-Stack
+-DAY 4-Stack
+-DAY 5-Queue/Deque
+-DAY 6-OOPs problem
