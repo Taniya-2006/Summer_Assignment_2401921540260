@@ -1,0 +1,23 @@
+#You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
+Evaluate the expression. Return an integer that represents the value of the expression.
+
+
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack=[]
+        for i in tokens:
+            if i.lstrip("-").isdigit():
+                stack.append(int(i))
+            elif i in "+-/*" and stack!=[]:
+                value1=stack.pop()
+                value2=stack.pop()
+                if i=="+":
+                   stack.append(value2+value1)
+                elif i=="-":
+                    stack.append(value2-value1)
+                elif i=="*":
+                    stack.append(value2*value1)
+                else:
+                    stack.append(int(value2/value1))
+        return stack[-1]
+        
