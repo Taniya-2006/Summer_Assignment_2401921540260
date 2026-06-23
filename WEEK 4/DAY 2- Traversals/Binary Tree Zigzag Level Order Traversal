@@ -1,0 +1,34 @@
+#Given the root of a binary tree, return the zigzag level order traversal of its nodes' values
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+            q=[]
+            zigzag=[]
+            flag=0
+            if root==None:
+               return zigzag
+
+            q.append(root)
+            while q:
+                current_level=[]
+                for i in range(len(q)):
+                    pnode=q.pop(0)
+                    current_level.append(pnode.val)
+                    if pnode.left:
+                        q.append(pnode.left)
+                    if pnode.right:
+                        q.append(pnode.right)
+                if flag==0:
+                    zigzag.append(current_level)
+                    flag=1
+                else:
+                    zigzag.append(current_level[::-1])
+                    flag=0
+            return zigzag
