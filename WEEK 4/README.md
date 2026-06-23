@@ -1,0 +1,6 @@
+-Day 1- Binary Tree Basics
+-Day 2- Traversals
+-Day 3- Binary Search Tree
+-Day 4- Path Based Problems
+-Day 5- Advanced Trees
+-Day 6- OOPs Problem
