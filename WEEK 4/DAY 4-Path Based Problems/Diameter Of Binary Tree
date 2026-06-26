@@ -1,0 +1,27 @@
+#Given the root of a binary tree, return the length of the diameter of the tree.
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if root==None:
+            return 0
+
+        lh=self.FindHeight(root.left)
+        rh=self.FindHeight(root.right)
+        current_dia=lh+rh
+        left=self.diameterOfBinaryTree(root.left)
+        right=self.diameterOfBinaryTree(root.right)
+        return max(current_dia,left,right)
+
+    def FindHeight(self,node):
+        if node==None:
+           return 0
+        return 1+max(self.FindHeight(node.left),self.FindHeight(node.right))
+
+
