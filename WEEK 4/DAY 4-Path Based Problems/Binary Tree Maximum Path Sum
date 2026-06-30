@@ -1,0 +1,29 @@
+#Given the root of a binary tree, return the maximum path sum of any non-empty path.
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        current=0
+        if root==None:
+           return float("-inf")
+
+        LeftSum=max(0,self.PathSum(root.left))
+        RightSum=max(0,self.PathSum(root.right))
+        current=root.val+LeftSum+RightSum
+        return max(current,self.maxPathSum(root.left),self.maxPathSum(root.right))
+
+    def PathSum(self,node):
+        left=0
+        right=0
+
+        if node==None:
+            return 0
+        left=max(0,self.PathSum(node.left))
+        right=max(0,self.PathSum(node.right))
+        return node.val+max(left,right)
