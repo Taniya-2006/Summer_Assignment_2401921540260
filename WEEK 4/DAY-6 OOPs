@@ -1,0 +1,97 @@
+#OOPs Problem
+
+interface Test{
+    void square(int x);
+}
+
+class Arithmetic implements Test{
+    public void square(int x){
+        System.out.println(x*x);
+    }
+}
+
+class ToTestInt{
+        Arithmetic obj=new Arithmetic();
+        void test(){
+           obj.square(2);
+        }
+    }
+
+class Outer{
+    void display(){
+        System.out.println("Outer");
+    }
+    class Inner{
+        void display(){
+            System.out.println("Inner");
+        }
+    }
+
+}
+
+class Point{
+    private int x,y;
+    public Point(){}
+    
+    public Point(int x,int y){
+       this.x=x;
+       this.y=y;
+    }
+    void setX(int X){
+        this.x=X;
+    }
+     void setY(int Y){
+        this.y=Y;
+    }
+     void setXY(int X,int Y){
+        this.x=X;
+        this.y=Y;
+    }
+}
+
+class Box {
+    protected int length, breadth;
+
+    public Box(int length, int breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    public void area() {
+        int a = length * breadth;
+        System.out.println("Area of box: " + a);
+    }
+}
+
+class Box3D extends Box {
+    private int height;
+
+    
+    public Box3D(int length, int breadth, int height) {
+        super(length, breadth); 
+        this.height = height;
+    }
+
+    public void volume() {
+        int v = length * breadth * height;
+        System.out.println("Volume of box3D: " + v);
+    }
+}
+
+
+class Main{
+    public static void main(String[] args){
+
+        ToTestInt t = new ToTestInt();
+        t.test();
+
+        Outer O=new Outer();
+        O.display();
+        Outer.Inner I=O.new Inner();
+        I.display();
+
+        Box3D b = new Box3D(10, 5, 2);
+        b.area();
+        b.volume();
+    }
+}
