@@ -1,0 +1,81 @@
+#Design an algorithm to serialize and deserialize a binary search tree
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Codec:
+
+    def serialize(self, root: Optional[TreeNode]) -> str:
+        """Encodes a tree to a single string.
+        """
+        bfs=[]
+        q=[]
+        if root==None:
+           return "N"
+
+        q.append(root)
+        while q:
+            pnode=q.pop(0)
+            if pnode==None:
+               bfs.append("N")
+               continue
+            if pnode.left:
+                q.append(pnode.left)
+            else:
+                q.append(None)
+            if pnode.right:
+                q.append(pnode.right)
+            else:
+               q.append(None)
+
+            bfs.append(str(pnode.val))
+        return ','.join(bfs)
+
+
+
+        
+
+    def deserialize(self, data: str) -> Optional[TreeNode]:
+        """Decodes your encoded data to tree.
+        """
+        data = data.split(",")
+
+        if data[0] == "N":
+            return None
+
+        q = []
+        root = TreeNode(int(data[0]))
+        q.append(root)
+
+        ind = 1
+
+        while q and ind < len(data):
+            node = q.pop(0)
+
+            if data[ind] == "N":
+               node.left = None
+            else:
+               node.left = TreeNode(int(data[ind]))
+               q.append(node.left)
+
+            ind += 1
+
+            if ind >= len(data):
+                break
+
+            if data[ind] == "N":
+               node.right = None
+            else:
+                node.right =TreeNode(int(data[ind]))
+                q.append(node.right)
+
+            ind += 1
+
+        return root
+
+
+
